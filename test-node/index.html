@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <form action="/test" method="post" id="formulario">
+     <input type="number" placeholder="Ingrese numero 1" name="numberOne">
+     <input type="number" placeholder="Ingrese numero 2" name="numberTwo">
+     <input type="hidden" name="operacion" id="operacion">
+     <button type="submit" id="btn_suma">Suma</button>
+     <button type="submit" id="btn_resta">Resta</button>
+     <button type="submit" id="btn_multiplicacion">Multiplicacion</button>
+     <button type="submit" id="btn_division">Division</button>
+ </form>
+ <h1 id="msj"></h1>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function resp_ajax(){
+        let datos=$("#formulario").serialize()
+        $.ajax({
+            url:"/test",
+            method:"POST",
+            data:datos,
+            success:function(respuesta){
+                $("#msj").text(respuesta);
+            }
+        });
+    };
+    $("#btn_suma").click(function(e){
+        e.preventDefault();
+        $("#operacion").val("suma");
+        resp_ajax();
+    });
+   
+    $("#btn_resta").click(function(e){
+        e.preventDefault();
+        $("#operacion").val("resta")
+        resp_ajax();
+    });
+    $("#btn_multiplicacion").click(function(e){
+        e.preventDefault();
+        $("#operacion").val("multiplicacion");
+        resp_ajax();
+    });
+    $("#btn_division").click(function(e){
+        e.preventDefault();
+        $("#operacion").val("division");
+        resp_ajax();
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<%- include('_header.ejs') %>
+
+<h3>Ver Reservas</h3>
+
+<div> 
+    <table class="table">
+        <thead>
+          ...
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            ...
+          </tr>
+          <tr>
+                <td><strong>CLIENTES</strong></td>
+                <td><strong>FECHA</strong></td>
+                <td><strong>AUTO</strong></td>
+                <td><strong>ESTADO</strong></td>
+                <td><strong>ACCIONES</strong></td>
+          </tr>
+          <% for(var i=0; i<reservas.length; i++){ %>
+            <tr>
+                <td><%= reservas[i].idCliente %></td>
+                <td><%= reservas[i].fecha %></td>
+                <td><%= reservas[i].auto %></td>
+                <td><%= reservas[i].estadoPago %></td>
+                <td>
+                    <a href="/detalle/<%= reservas[i]._id + '/' + reservas[i].auto %>">Ver</a> - 
+                    <a href="/modificar/<%= reservas[i]._id %>">Editar</a> - 
+                    <a href="/eliminar/<%= reservas[i]._id %>">Eliminar</a>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+      </table>
+    
+</div> 
+
+<%- include('_footer.ejs') %>

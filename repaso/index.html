@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Repaso</title>
+  </head>
+  <body>
+    <form action="/alquilerPeliculas" method="post">
+      <input type="number" name="idCliente"  placeholder="Ingrese el id del cliente">
+          <select name="idPelicula">
+              <option value="1001">Hombre Araña</option>
+              <option value="1002">Terminator</option>
+              <option value="1003">La bella y la bestia</option>
+          </select>
+        <select name="formato" >
+            <option value="cd">CD</option>
+            <option value="dvd">DVD</option>
+            <option value="vhs">VHS</option>
+            </select>
+        <input type="date" name="fechaRetiro">
+        <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

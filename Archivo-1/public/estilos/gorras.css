@@ -1,0 +1,32 @@
+.subtitulo{
+    text-align: center;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 40px;
+    font-size: 80px;
+}
+
+
+
+
+
+.contenedor-servicio {
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+
+}
+
+
+
+.contenedor-servicio img{
+width: 40%;
+
+}
+
+.checklist-servicio{
+    width: 45%;
+}

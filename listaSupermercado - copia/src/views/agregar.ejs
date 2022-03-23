@@ -1,0 +1,145 @@
+<%- include('header.ejs') %>
+
+<% if(nuevo == true){ %>
+
+<h3>Crear una nueva compra</h3>
+
+<form action="/comprar" method="post">
+ 
+<form class="row g-3" id="formulario">
+
+    <div class="col-md-3"></div>
+    <label for="validationDefault04" class="form-label">Comprador</label>
+    <select name="idComprador" class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Escoge</option>
+      <option value="1001">Adriana Molina</option>
+        <option value="2002">Brenda Montero</option>
+        <option value="3003">Manuel Santiago</option>
+        <option value="4004">Yasnovi Nuñez</option>
+        <option value="4004">Nicole Santis</option>
+    </select>
+    <div class="col-md-3"></div>
+    <label for="validationDefault04" class="form-label">Producto</label>
+    <select name="producto" class="form-select" id="producto required>
+      <option selected disabled value="">Escoge</option>
+      <option value="Carne">Carne</option>
+      <option value="Aseo">Aseo</option>
+      <option value="Lacteos">Lacteos</option>
+    </select>
+    <div class="col-md-4">
+      <label for="validationDefault02" class="form-label">Precio</label>
+      <input name="precio" type="number" class="form-control" id="precio" value="Otto" required>
+    </div>
+    <div class="col-md-4">
+      <label for="validationDefaultUsername" class="form-label">Cantidad</label>
+      <select name="cantidad" class="form-select" id="cantidad" required>
+        <option selected disabled value="">Escoge</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    <h3 id="msj"></h3>
+
+    </div>
+    <input type="hidden" name="total" id="total">
+    <div class="col-md-6">
+      <label for="validationDefault03" class="form-label">Fecha</label>
+      <input name="fechaCompra" type="date" class="form-control" id="validationDefault03" required>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+  
+<% } else{ %>
+<h3>Modificar Compra</h3>
+<form class="row g-3">
+
+  <div class="col-md-3"></div>
+  <label for="validationDefault04" class="form-label">Comprador</label>
+  <select name="idComprador" class="form-select" id="validationDefault04" required>
+    <option selected disabled value="">Escoge</option>
+    <option value="1001">Adriana Molina</option>
+      <option value="2002">Brenda Montero</option>
+      <option value="3003">Manuel Santiago</option>
+      <option value="4004">Yasnovi Nuñez</option>
+      <option value="4004">Nicole Santis</option>
+  </select>
+  <div class="col-md-3"></div>
+  <label for="validationDefault04" class="form-label">Producto</label>
+  <select  name="producto" class="form-select" id="validationDefault04" required>
+    <option selected disabled value="">Escoge</option>
+    <option value="Carne">Carne</option>
+    <option value="Aseo">Aseo</option>
+    <option value="Lacteos">Lacteos</option>
+  </select>
+  <div class="col-md-4">
+    <label for="validationDefault02" class="form-label">Precio</label>
+    <input name="precio" type="number" class="form-control" id="validationDefault02" value="Otto" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefaultUsername" class="form-label">Cantidad</label>
+    <select name="cantidad" class="form-select" id="validationDefault04" required>
+      <option selected disabled value="">Escoge</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+
+<form action="/modificar" method="post">
+    <label>Cliente</label>
+    <select name="idComprador">
+        <option <%= (res.idComprador == 1001)? "selected":"" %> value="1001">Christiam Omaña</option>
+        <option <%= (res.idComprador == 2002)? "selected":"" %> value="2002">Brenda Montero</option>
+        <option <%= (res.idComprador == 3003)? "selected":"" %>  value="3003">Saul Montero</option>
+        <option <%= (res.idComprador == 4004)? "selected":"" %> value="4004">Santiago Fronten</option>
+    </select>
+    <br>
+    <br>
+    <label>Producto</label>
+    <select name="producto">
+        <option <%= (res.producto == "Carne")? "selected":"" %> value="Carne">Carne</option>
+        <option <%= (res.producto == "Aseo")? "selected":"" %> value="Aseo">Aseo</option>
+        <option <%= (res.producto == "Lacteos")? "selected":"" %>value="Lacteos">Lacteos</option>
+    </select>
+    <br>
+    <label>Precio</label>
+    <input type="number" name="precio" placeholder="Ingrese el Precio" value="<%= res.precio %>">
+    <br>
+    <label>Cantidad</label>
+    <select name="cantidad">
+        <option <%= (res.producto == 1)? "selected":"" %>value="1">1</option>
+        <option <%= (res.producto == 2)? "selected":"" %>value="2">2</option>
+        <option <%= (res.producto == 3)? "selected":"" %> value="3">3</option>
+    </select>
+    <br>
+    <label>Fecha</label>
+    <input type="date" name="fechaCompra" placeholder="Ingrese la fecha" value="<%= res.fecha %>">
+    <br>
+    <button type="submit">Guardar</button>
+</form> 
+
+
+<% } %> 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+var precio=0;
+var cantidad=1;
+function calculo(){
+  let total=precio*cantidad;
+  $("#msj").text(total);
+  $('#total').val(total);
+}
+$("#precio").keyup(function (e) {
+      precio = $(this).val();
+      calculo();
+    });
+    
+    $("#cantidad").change(function (e) {
+      cantidad = parseInt($(this).val());
+      calculo();
+      console.log(cantidad);
+    }); 
+
+</script>
+
+<%- include('footer.ejs') %>

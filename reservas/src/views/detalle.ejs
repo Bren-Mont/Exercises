@@ -1,0 +1,23 @@
+<%- include('_header.ejs') %>
+
+<div>
+    <ul>
+        <li>
+            <strong>Fecha: </strong><%= res.fecha %>
+        </li>
+        <li>
+            <strong>Cliente: </strong><%= res.idCliente %>
+        </li>
+        <li>
+            <strong>Auto: </strong><%= res.auto %>
+        </li>
+        <li>
+            <strong>Locación: </strong><%= res.ciudad %>
+        </li>
+        <li>
+            <strong>Pagado: </strong><%= res.estadoPago %>
+        </li>
+    </ul>
+</div>
+
+<%- include('_footer.ejs') %>

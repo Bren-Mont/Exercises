@@ -1,0 +1,68 @@
+*{
+    font-family: "hv";
+    background-color: rgb(189 63 206 / 32%);
+    border-radius: 15px;
+}
+@font-face {
+    font-family: "hv";
+    src: url(/Texto/NunitoSans-Regular.ttf);
+}
+.titulo, .datos, .acerca,.academica,.laboral{
+    color: #ffffff;
+    padding: 15px;
+}
+.foto{
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+    border: 25px solid #462461;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+.titulo{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 15px;
+}
+.titulo p, h1{
+    display: flex;
+    justify-content: center;
+}
+.intro{
+    font-size: 40px;
+    display: grid;
+    grid-row: 30% 70%;
+    border-radius: 15px;
+    margin-right: 10px;
+    padding: 15px;
+}
+.intro h1, h2{
+    color: #462461;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-right: 10px;
+}
+.textos{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+.experiencia{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    padding: 15px;
+    margin: 15px;
+}
+.textos{
+    font-size: 20px;
+    margin:25px;
+    text-align: justify;
+}
+.acerca{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.experiencia{
+    font-size: 20px;
+}
+

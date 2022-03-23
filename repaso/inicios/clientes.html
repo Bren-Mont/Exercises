@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="/cliente" method="get" id="formulario">
+    <input type="number" name="clienteId" placeholder="Ingrese su numero de documento" />
+    <br /><br />
+    <p id="msj"></p>
+    <button type="submit" id="btn">Buscar</button>
+    <button type="submit" id="btn-eliminar">Eliminar</button>
+    <button type="submit" id="btn-registrar">Registrar</button>
+    <button type="submit" id="btn-actualizar">Actualizar</button>
+
+  </form>
+  <br /><br />
+  <form action="/cliente" method="post" name="formulario" id="formularioRegistro">
+    <input type="number" name="clienteId" placeholder="Ingrese su numero de documento" />
+    <br /><br />
+    <input type="text" name="nombre" placeholder="Ingrese su nombre" />
+    <br /><br />
+    <input type="text" name="apellido" placeholder="Ingrese su apellido" />
+    <br /><br />
+    <input type="number" name="telefono" placeholder="Ingrese el numero de teléfono" />
+    <br /><br />
+    <button type="submit">Enviar</button>
+
+  </form>
+  <form action="/cliente" method="get" name="formulario" id="formularioActualizar">
+    <input type="number" name="Clienteidnew" placeholder="Ingrese su numero de documento" />
+    <br /><br />
+    <input type="text" name="nombre" placeholder="Ingrese su nombre" />
+    <br /><br />
+    <input type="text" name="apellido" placeholder="Ingrese su apellido" />
+    <br /><br />
+    <input type="number" name="telefono" placeholder="Ingrese el numero de teléfono" />
+    <br /><br />
+    <button type="submit" id="btn-actualizar2">Actualizar</button>
+
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+
+    $("#btn").click(function (e) {
+      e.preventDefault();
+      let datos = $("#formulario").serialize();
+
+      $.ajax({
+        url: "/cliente",
+        method: "get",
+        data: datos,
+        success: function (respuesta) {
+          $("#msj").text(respuesta);
+        },
+      });
+    });
+    $("#btn-eliminar").click(function (e) {
+      e.preventDefault();
+      let datos = $("#formulario").serialize();
+      $.ajax({
+        url: "/eliminar",
+        method: "get",
+        data: datos,
+        success: function (respuesta) {
+          $("#msj").text(respuesta);
+        },
+      });
+    });
+    $("#btn-actualizar2").click(function (e) {
+      e.preventDefault();
+      let datos = $("#formularioActualizar").serialize();
+      datos += "&" + $("#formulario").serialize();
+      $.ajax({
+        url: "/modificar",
+        method: "get",
+        data: datos,
+        success: function (respuesta) {
+          $("#msj").text(respuesta);
+        },
+      });
+    });
+    $('#formularioRegistro').hide()
+    $("#btn-registrar").click(function (e) {
+      e.preventDefault();
+      $('#formularioRegistro').show()
+      $('#formularioActualizar').hide()
+    });
+    $('#formularioActualizar').hide()
+    $("#btn-actualizar").click(function (e) {
+      e.preventDefault();
+      $('#formularioActualizar').show()
+      $("#formularioRegistro").hide();
+    });
+
+  </script>
+</body>
+
+</html>

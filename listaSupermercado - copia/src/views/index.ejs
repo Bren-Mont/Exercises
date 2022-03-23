@@ -1,0 +1,54 @@
+<%- include('header.ejs') %>
+
+<h3>Lista supermercado</h3>
+
+<div> 
+    <table class="table">
+        <thead>
+          ...
+        </thead>
+        <tbody>
+          <tr class="table-active">
+            ...
+          </tr>
+          <tr>
+                <td><strong>Comprador</strong></td>
+                <td><strong>Producto</strong></td>
+                <td><strong>Fecha de compra</strong></td>
+                <td><strong>Registrado</strong></td>
+                <td><strong>Precio</strong></td>
+                <td><strong>Cantidad</strong></td>
+                <td><strong>Total</strong></td>
+                <td><strong>Acciones</strong></td>
+
+
+          </tr>
+          <% var total=0; %>
+          <% for(var i=0; i<listas.length; i++){ %>
+              <% total= total + listas[i].total; %>
+
+            <tr>
+                <td><%= listas[i].idComprador %></td>
+                <td><%= listas[i].producto%></td>
+                <td><%= listas[i].fechaCompra %></td>
+                <td><%= listas[i].estado%></td>
+                <td><%= listas[i].precio%></td>
+                <td><%= listas[i].cantidad%></td>
+                <td><%= listas[i].total%></td>
+
+                <td>
+                    <a href="/detalle/<%= listas[i]._id + '/' + listas[i].producto %>">Ver</a> - 
+                    <a href="/modificar/<%= listas[i]._id %>">Editar</a> - 
+                    <a href="/eliminar/<%= listas[i]._id %>">Eliminar</a>
+                </td>
+            </tr>
+        <% } %>
+        <tr>
+          <td colspan="6">Total</td>
+          <td colspan="6"><%= total %></td>
+      </tr>
+        </tbody>
+      </table>
+</div> 
+
+<%- include('footer.ejs') %>
